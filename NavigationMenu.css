@@ -1,0 +1,179 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 200vh; /* For demonstration of scroll effect */
+            background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        nav.scrolled {
+            background-color: #2c3e50;
+            padding: 5px 50px;
+        }
+
+        nav.scrolled .logo,
+        nav.scrolled .menu a {
+            color: #ecf0f1;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            transition: color 0.3s ease;
+        }
+
+        .logo span {
+            color: #3498db;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            display: block;
+            padding: 20px 25px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #3498db;
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        nav.scrolled .menu a:hover {
+            color: #3498db;
+            background-color: rgba(236, 240, 241, 0.1);
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: #3498db;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .menu a:hover::after {
+            width: 80%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #2c3e50;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled .hamburger div {
+            background-color: #ecf0f1;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            nav {
+                padding: 0 20px;
+            }
+            
+            nav.scrolled {
+                padding: 5px 20px;
+            }
+            
+            .menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: all 0.5s ease;
+            }
+            
+            nav.scrolled .menu {
+                background-color: rgba(44, 62, 80, 0.95);
+            }
+            
+            .menu.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .menu a {
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+
+        /* Content for demonstration */
+        .content {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
